@@ -112,4 +112,11 @@ class OperationController extends Controller
         return redirect()->route('operations.index')
             ->with('success','Product deleted successfully');
     }
+    public function demo(Operation $operation)
+    {
+        $operation->delete();
+
+        return redirect()->route('operations.index')
+            ->with('success','Product deleted successfully');
+    }
 }
