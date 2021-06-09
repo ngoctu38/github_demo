@@ -41,12 +41,13 @@ class OperationController extends Controller
     public function store(Request $request)
     {
         $operation = Operation::all();
+		
         $request->validate([
             'name' => 'required',
             'image' => 'required',
         ]);
+		$demo = '12';
         $image = Storage::putFile('public/images',$request->image);
-
 
         Operation::create($request->all());
 
