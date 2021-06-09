@@ -20,6 +20,7 @@ Route::get('/', function () {
 //Route::resource('products','App\Http\Controllers\ProductController');
 Route::resource('operations','App\Http\Controllers\OperationController');
 
+
 Route::group(['prefix' => 'products'], function (){
     Route::get('/index', 'App\Http\Controllers\ProductController@index')->name('products.index');
     Route::get('/create', 'App\Http\Controllers\ProductController@create')->name('products.create');
@@ -27,4 +28,9 @@ Route::group(['prefix' => 'products'], function (){
     Route::post('/export', 'App\Http\Controllers\ProductController@export')->name('products.export');
         Route::post('/importExcel', 'App\Http\Controllers\ProductController@importExcel')->name('products.importExcel');
 
+});
+Route::group(['prefix' => 'demos'], function (){
+    Route::get('/', 'App\Http\Controllers\DemoController@index')->name('demos.index');
+    Route::get('/create', 'App\Http\Controllers\DemoController@create')->name('demos.create');
+    Route::post('/create', 'App\Http\Controllers\DemoController@store')->name('demos.store');
 });

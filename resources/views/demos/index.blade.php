@@ -1,4 +1,4 @@
-@extends('products.layout')
+@extends('demos.layout')
 
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2>Laravel 7 CRUD Example from scratch - ItSolutionStuff.com</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('demos.create') }}"> Create New Demo</a>
             </div>
         </div>
     </div>
@@ -20,33 +20,23 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>No</th>
             <th>Name</th>
-            <th>Details</th>
-            <th width="280px">Action</th>
+            <th>status</th>
         </tr>
-        @foreach ($products as $product)
+        @foreach ($demo as $product)
             <tr>
-                <td>{{ ++$i }}</td>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->detail }}</td>
-{{--                <td>--}}
-{{--                    <form action="{{ route('products.destroy',$product->id) }}" method="POST">--}}
-
-{{--                        <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>--}}
-
-{{--                        <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>--}}
-
-{{--                        @csrf--}}
-{{--                        @method('DELETE')--}}
-
-{{--                        <button type="submit" class="btn btn-danger">Delete</button>--}}
-{{--                    </form>--}}
-{{--                </td>--}}
+                <td>
+                @if( $product->status == 0)
+                    <button type="submit">Publish</button>
+                @else
+                    <button type="submit">Unpublish</button>
+                @endif
+                </td>
             </tr>
         @endforeach
     </table>
 
-    {!! $products->links() !!}
+    {!! $demo->links() !!}
 
 @endsection

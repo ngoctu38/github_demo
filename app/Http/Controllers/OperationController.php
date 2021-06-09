@@ -115,5 +115,10 @@ class OperationController extends Controller
   public function demo()
     {
         return view('operations.create');
-    }
+    } 
+  public function demo1()
+    {
+        return view('operations.create');
+    } 
+
 }
